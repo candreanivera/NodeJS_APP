@@ -4,9 +4,16 @@ const bodyParser = require("body-parser");
 const dotenv = require('dotenv'); //.env file
 dotenv.config();
 const {PORT} = process.env;
+const path = require("path");
 
 //Instantiation of app 
 const app = express();
+
+const publicPath = path.resolve(__dirname, "public");
+app.use(express.static(publicPath));
+
+console.log(__dirname);
+console.log(publicPath);
 
 //To import the routes
 const userRouters = require('./app/routes/user');
